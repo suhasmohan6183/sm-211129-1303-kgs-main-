@@ -1,0 +1,24 @@
+<div class="col-md-4 col-md-offset-3">
+  <h2>Add a Missing Pet</h2>
+  <form name="form" (ngSubmit)="f.form.valid && addMissingPet()" #f="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+      <label for="name">Pet Name</label>
+      <input id="name" type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required />
+      <div *ngIf="f.submitted && !name.valid" style="color:red;" class="help-block">Pet Name is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !missingsince.valid }">
+      <label id="missingsince" for="missingsince">Missing Since</label>
+      <input type="date" class="form-control" name="missingsince" [(ngModel)]="model.missingsince" #missingsince="ngModel" required />
+      <div *ngIf="f.submitted && !missingsince.valid" style="color:red;" class="help-block">Missing Since is required</div>
+    </div>
+    <div class="form-group">
+      <label id="pettype" for="pettype">Pet Type</label>
+      <app-pet-type-dropdown (dropDownValue)="onDropDownChange($event)"></app-pet-type-dropdown>
+      <div *ngIf="f.submitted && !validPetType" style="color:red;" class="help-block">Pet Type is required.</div>
+      <div *ngIf="ShowServerMessage" [ngStyle]="{'color': IsSuccess ? 'green' : 'red' }" class="help-block">{{ServerMessage}}</div>
+    </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Add Pet</button>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,8 @@
+<div style=" margin-bottom:2px">
+  <select (change)="onDropdownChange($event.target.value)" style="width:150px">
+    <option *ngFor="let detail of dropDownDetails" value={{detail.value}}>
+      {{detail.description}}
+    </option>
+  </select>
+  
+</div>

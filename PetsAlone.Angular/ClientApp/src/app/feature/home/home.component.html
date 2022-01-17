@@ -1,0 +1,15 @@
+<app-pet-type-dropdown (dropDownValue)="onDropDownChange($event)"></app-pet-type-dropdown>
+<table style="margin-top:20px" class="table table-sm">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Missing Since</th>
+    <th>Pet Type</th>
+  </tr>
+  <tr *ngFor="let petdata of petsData">
+    <td>{{petdata.id}}</td>
+    <td>{{petdata.name}}</td>
+    <td>{{petdata.displayMissingSince}}</td>
+    <td>{{petdata.displayPetType}}</td>
+  </tr>
+</table>
